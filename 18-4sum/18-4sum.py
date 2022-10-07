@@ -17,6 +17,7 @@ class Solution:
                     else:
                         ans.add((nums[i], nums[j], nums[left],nums[right]))
                         left+=1
+                        right-=1
 
         return ans
         
