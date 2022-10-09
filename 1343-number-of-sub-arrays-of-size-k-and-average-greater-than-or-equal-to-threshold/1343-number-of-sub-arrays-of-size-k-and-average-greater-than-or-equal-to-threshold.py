@@ -14,6 +14,9 @@ class Solution:
             left+=1
             right+=1
         return ans
+    
+#time complexity O(n)
+#space complexity O(n)
                 
         
         
