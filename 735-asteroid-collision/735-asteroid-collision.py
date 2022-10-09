@@ -3,7 +3,10 @@ class Solution:
         des_ast = []
         astroid = 0
         while astroid < len(asteroids):
-            if des_ast and (des_ast[-1] > 0 and asteroids[astroid] < 0):
+            if not des_ast:
+                des_ast.append(asteroids[astroid])
+                astroid+=1
+            elif des_ast[-1] > 0 and asteroids[astroid] < 0:
                 if abs(des_ast[-1]) > abs(asteroids[astroid]):
                     astroid+=1
                 elif abs(des_ast[-1]) == abs(asteroids[astroid]):
