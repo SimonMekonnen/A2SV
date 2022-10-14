@@ -6,9 +6,9 @@ class Solution:
         for i in arr:
             total+=i
             if total % 2 == 0:
-                ans+=odd_even[1]
+                ans+=odd_even[1]%1000000007
             else:
-                ans+=odd_even[0]
+                ans+=odd_even[0]%1000000007
             odd_even[total % 2]+=1
         return ans%1000000007
             
