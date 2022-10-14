@@ -12,12 +12,9 @@ class Solution:
             total = max(ans,total)
         right+=1
         while right < len(cus):
-            if g[right] == 1:
-                ans+=cus[right]
-            else:
-                sat+=cus[right]
-            if g[left] == 1:
-                ans-=cus[left]
+            ans+=cus[right]*g[right]
+            sat+=cus[right] if g[right] == 0 else 0
+            ans-=cus[left]*g[left]
             total = max(ans,total)
             right+=1
             left+=1
