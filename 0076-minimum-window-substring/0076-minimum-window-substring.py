@@ -28,11 +28,3 @@ class Solution:
                 Scount[s[left]]-=1
                 left+=1
         return s[l:r]
-# time complexity O(2*26*n) -> O(n)
-# space complexity O(26) ->O(1)
-    
-
-                
-        
-       
-        
