@@ -1,11 +1,11 @@
 class Solution:
     def waysToSplitArray(self, nums: List[int]) -> int:
-        pre = [nums[0]]
-        for i in range(1,len(nums)):
-            pre.append(pre[-1]+nums[i])
+        _sum = sum(nums)
+        current = 0
         ans = 0
         for i in range(len(nums)-1):
-            if pre[i] >= (pre[-1] -pre[i]):
+            current+=nums[i]
+            if current >= _sum - current:
                 ans+=1
         return ans
         
