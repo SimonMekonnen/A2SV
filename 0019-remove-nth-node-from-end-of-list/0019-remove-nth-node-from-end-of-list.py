@@ -18,7 +18,6 @@ class Solution:
             return head.next
         while l  > 0:
             head = head.next
-            print(head)
             l-=1
         head.next = head.next.next
         return dummy 
