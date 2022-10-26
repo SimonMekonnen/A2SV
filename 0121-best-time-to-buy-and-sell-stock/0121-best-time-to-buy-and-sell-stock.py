@@ -4,8 +4,9 @@ class Solution:
         left = 0
         right = 1
         while right < len(nums):
-            profit = (max(profit,nums[right] - nums[left]))
-            if nums[right] - nums[left] < 0:
+            if nums[left] < nums[right]:
+                profit = (max(profit,nums[right] - nums[left]))
+            else:
                 left = right
             right+=1
         return profit
