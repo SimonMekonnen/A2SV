@@ -5,7 +5,8 @@ class Solution:
         right = 1
         while right < len(nums):
             if nums[left] < nums[right]:
-                profit = (max(profit,nums[right] - nums[left]))
+                p = nums[right] - nums[left]
+                profit = (max(profit,p))
             else:
                 left = right
             right+=1
