@@ -2,9 +2,10 @@ class Solution:
     def uniqueOccurrences(self, arr: List[int]) -> bool:
         b = Counter(arr)
         c = list(b.values())
-        c.sort()
-        for i in range(1,len(c) ):
-            if c[i] == c[i-1]:
+        a = set()
+        for i in c:
+            if i in a:
                 return False
+            a.add(i)
         return True
         
