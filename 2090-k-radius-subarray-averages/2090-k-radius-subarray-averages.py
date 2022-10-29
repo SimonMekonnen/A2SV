@@ -16,6 +16,6 @@ class Solution:
                 total-=nums[left]
                 total+=nums[right]
                 left+=1
-        ans[b] = (total//(k*2+1))
+        ans[b] = (total//c)
         return ans
         
