@@ -13,7 +13,6 @@ class Solution:
                     return False
                 if dic[words[h][p1]] < dic[words[h + 1][p1]]:
                     Flag = False
-                if Flag == False:
                     break
                 p1+=1
                 
