@@ -17,6 +17,7 @@ class Solution:
                     ans+=dic[i*2 - deli[j]]
             
             dic[deli[j]]+=1
+            
         return ans % (10**9 + 7)
 
         
