@@ -1,0 +1,14 @@
+import textwrap
+
+def wrap(s, m):
+    
+    ans = []
+    i= 0
+    while i < len(s):
+        
+        ans.append(s[i:i+m])
+        i+=m
+            
+    return "\n".join(ans)
+
+if __name__ == '__main__':
