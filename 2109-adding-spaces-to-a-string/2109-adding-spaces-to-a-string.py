@@ -1,7 +1,7 @@
 class Solution:
     def addSpaces(self, s: str, spaces: List[int]) -> str:
         
-        ans = ""
+        ans = []
         
         i = 0
         j = 0
@@ -9,13 +9,12 @@ class Solution:
         while i < len(s) and j < len(spaces):
             
             if i >= spaces[j]:
-                ans+=" "
+                ans.append(" ")
                 j+=1
                 
             else:
-                ans+= s[i]
+                ans.append(s[i])
                 i+=1
         ans+=s[i:]
-       
-        return ans
+        return "".join(ans)
         
