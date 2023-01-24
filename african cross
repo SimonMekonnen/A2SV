@@ -1,0 +1,28 @@
+r,c = list(map(int,input().split()))
+mat = []
+
+for _ in range(r):
+    mat.append(list(map(lambda x : [x,1], list(input()))))
+
+for row in range(r):
+    
+    for col in range(c):
+        now = mat[row][col][0]
+        for k in range(col + 1,c):
+            if mat[row][k][0] == now:
+                mat[row][k][1] = 0
+                mat[row][col][1] = 0
+            
+        for k in range(row + 1,r):
+            if mat[k][col][0] == now:
+                mat[k][col][1] = 0
+                mat[row][col][1] = 0
+
+ans = ""
+for row in range(r):
+    
+    for col in range(c):
+        if mat[row][col][1]!=0:
+            ans+=mat[row][col][0]
+            
+print(ans)
