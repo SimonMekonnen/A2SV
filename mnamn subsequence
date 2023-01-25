@@ -1,0 +1,18 @@
+ = int(input())
+ 
+for _ in range(N):
+    n = int(input())
+    nums = list(map(int,input().split()))
+    
+    count = []
+    
+    for i in range(len(nums)):
+        if not count  or (count[-1] > 0 and nums[i] < 0) or (count[-1] < 0 and nums[i] > 0):
+            
+            count.append(nums[i])
+        else:
+            if count[-1] < nums[i]:
+                count.pop()
+                count.append(nums[i])
+    
+    print(sum(count))
