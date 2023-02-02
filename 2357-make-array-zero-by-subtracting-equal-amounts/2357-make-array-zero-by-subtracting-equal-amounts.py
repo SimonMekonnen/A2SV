@@ -1,7 +1,6 @@
 class Solution:
     def minimumOperations(self, nums: List[int]) -> int:
+     
         
-        a = set(nums)
-        
-        return len(a) if 0 not in a else len(a) - 1
+        return len(set(nums)) if 0 not in set(nums) else len(set(nums)) - 1
         
