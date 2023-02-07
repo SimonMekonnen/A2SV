@@ -1,6 +1,5 @@
 class Solution:
     def fullJustify(self, words: List[str], maxWidth: int) -> List[str]:
-        
         ans = []
         left = 0
         total = 0
@@ -10,7 +9,6 @@ class Solution:
                 ans.append(words[left : right])
                 left = right
                 total = len(words[right]) + 1
-    
         ans.append(words[left : ])
         total = []
         for i in range(len(ans) - 1):
@@ -19,10 +17,8 @@ class Solution:
             for j in ans[i]:
                 t += len(j)
                 todo.append(list(j))
-            
             now = maxWidth - t
             n = 0
-        
             while now != 0 and len(todo)!=1:
                 n%=(len(todo) - 1)
                 todo[n].append(" ")
@@ -40,14 +36,11 @@ class Solution:
             ans[-1][i].append(" ")
             now -= 1
         ans[-1][-1].extend([" " for i in range(now)])
-        total.append(ans[-1])
-             
+        total.append(ans[-1])   
         for i in range(len(total)):
             for j in range(len(total[i])):
                 total[i][j] = "".join(total[i][j])
             total[i] = "".join(total[i])
-            
-        
         return total
                 
                 
