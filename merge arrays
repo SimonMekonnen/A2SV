@@ -1,0 +1,16 @@
+n , k = list(map(int,input().split()))
+n2 = list(map(int,input().split()))
+n1= list(map(int,input().split()))
+n1.append(float('inf'))
+n2.append(float('inf'))
+ans = []
+l = 0
+r = 0
+while len(ans) != n + k:
+    if n1[l] < n2[r] :
+        ans.append(n1[l])
+        l+=1
+    else:
+        ans.append(n2[r])
+        r+=1
+print(*ans)
