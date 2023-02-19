@@ -1,18 +1,23 @@
-class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        dic = {}
         left = 0
-        ans =  0
-        chars = {}
+        maxx = float('-inf')
         
         for right in range(len(s)):
-            if s[right] in chars and left <= chars[s[right]]:
-                left = chars[s[right]]+1
-            else:
-                ans = max(right - left + 1 , ans)
-            chars[s[right]] = right
+            
+            while s[right] in dic:
                 
-    
-        return ans
+                del dic[s[left]]
+                left += 1
+          
+            dic[s[right]] = right
+            maxx = max(maxx,right-left+1)
+        return maxx if maxx != float('-inf') else 0
+            
+                
+                
+        
     
       
     
