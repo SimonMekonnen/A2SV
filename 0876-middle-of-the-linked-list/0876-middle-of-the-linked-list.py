@@ -6,11 +6,15 @@
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
         
-        arr = []
+      
+        cur = head 
+        count = 0
+        while cur:
+            count += 1
+            cur = cur.next
         
-        while head:
-            arr.append(head)
+        for i in range(count // 2):
             head = head.next
-        
-        return arr[len(arr)//2]
+            
+        return head
         
