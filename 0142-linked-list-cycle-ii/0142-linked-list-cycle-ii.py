@@ -14,22 +14,17 @@ class Solution:
             slow = slow.next
             fast  = fast.next.next
             if slow  == fast:
-                ba = True
-                break
+                curr = head
+        
+                while slow != curr:
+
+                    slow = slow.next
+                    curr = curr.next
+
+                return slow
+
         
        
-        if ba  == False:
-            return 
-        curr = head
         
-        while slow != curr:
-            
-            slow = slow.next
-            curr = curr.next
-        
-        return slow
-        
-      
-       
         
         
