@@ -8,33 +8,45 @@ class Solution:
         
         dummy = ListNode()
         dummy.next = head
-        
-        curr = dummy
+        cur = dummy
+        last = None
         l = 0
-        while l < left - 1:
-            
-            curr = curr.next
-            l += 1
-        first = curr
-        torev = curr.next
         r = 0
-        curr = dummy
-        while r < right + 1 :
-            
-            curr =  curr.next
-            r+=1
-        
-        last = curr
-        
-        while torev != curr:
-            b = torev.next
-            torev.next = last
-            last = torev
-            torev = b
-       
+        while r  < right:
+            if l == left - 1:
+                first = cur
+            if l != left:
+                cur = cur.next
+                l += 1
+            if l == left:
+                if last == None:
+                    hey  = cur
+                b = cur.next
+                cur.next = last
+                last = cur
+                cur = b
+             
+            r += 1
+   
         first.next = last
-        
+        hey.next = cur
         return dummy.next
+                
+                
+                
+                
+                
+        
+                
+                
+                
+                
+                
+                
+                
+        
+        
+        
         
        
         
