@@ -6,10 +6,11 @@ class Solution:
         nums.sort()
         
         stk  = []
-        for i in nums[::-1]:
-            if stk and (target - i[0]) / i[1]  <= stk[-1]:
-                pass
-            else:
-                stk.append((target - i[0]) / i[1])
-        return len(stk)
         
+        for i in nums:
+            while stk and (target - i[0]) / i[1] >= stk[-1]:
+                stk.pop()
+            
+            stk.append((target - i[0]) / i[1])
+        
+        return len(stk)
