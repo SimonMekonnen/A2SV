@@ -1,30 +1,20 @@
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
-        
-        o = 0
-        c = 0
-        ans = 0
         s = list(s)
         
-        for i in range(len(s)):
-            
-            if s[i] == ")":
-                c+= 1
-            if s[i] == "(":
-                o += 1
-            
-            if c > o:
-                s[i] = ""
-                c-=1 
+        stk = []
         
-        now = o - c
-        if now > 0:
-            for i in range(len(s ) - 1, -1 ,-1):
-                if s[i] == "(":
+        for i in range(len(s)):
+            if s[i] == "(":
+                stk.append(i)
+            if s[i] == ")":
+                if stk:
+                    stk.pop()
+                else:
                     s[i] = ""
-                    now -= 1
-                if now == 0:
-                    break
+        for i in stk:
+            s[i] = ""
+        
         return "".join(s)
         
         
