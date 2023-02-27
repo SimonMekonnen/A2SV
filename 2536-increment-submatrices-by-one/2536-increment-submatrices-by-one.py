@@ -19,13 +19,13 @@ class Solution:
                 mat[br + 1][bc + 1] += 1
                 
         for row in range(n):
-            for col in range(1,n):
-                mat[row][col]+=mat[row][col - 1]
-        
-                  
-        for col in range(n):
-            for row in range(1,n):
-                mat[row][col]+=mat[row - 1][col]
+            for col in range(n):
+                
+                top = mat[row - 1][col] if row - 1 >= 0 else 0
+                left = mat[row][col - 1] if col - 1 >= 0 else 0
+                di = mat[row - 1][col - 1] if col - 1 >= 0 and row - 1 >= 0 else 0
+                
+                mat[row][col] += top + left - di
         
         return mat
                 
