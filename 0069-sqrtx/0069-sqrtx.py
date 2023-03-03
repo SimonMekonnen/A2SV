@@ -3,7 +3,7 @@ class Solution:
         
         arr = []
         
-        for i in range(100000):
+        for i in range(50000):
             arr.append(i*i)
         
         for i in range(0,len(arr)):
