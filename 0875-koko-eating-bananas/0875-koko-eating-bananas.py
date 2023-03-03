@@ -2,7 +2,7 @@ class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
         
         left = 1
-        right = max(piles)
+        right = 1000000000
         
         while left <= right:
             mid = (right + left)//2
