@@ -4,7 +4,6 @@ class Solution:
         c = bisect_right(nums,target)
         
         ans = []
-        print(b)
         if b >= len(nums) or nums[b] != target:
             return [-1,-1]
         else:
