@@ -1,0 +1,9 @@
+def superDigit(n, k):
+    # Write your code here
+    if len(n) == 1:
+        return int(n)
+    ans = 0
+    for i in range(len(n)):
+        ans += int(n[i])
+    ans *= k
+    return superDigit(str(ans),1)
