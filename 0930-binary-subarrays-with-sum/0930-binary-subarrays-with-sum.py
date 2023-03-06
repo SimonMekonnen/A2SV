@@ -2,15 +2,31 @@ class Solution:
     def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
         
         total = 0
-        pre = {0 : 1}
         ans = 0
-        for i in nums:
+        left = 0
+        for right in range(len(nums)):
+            total += nums[right]
+            while left <= right and total >= goal:
+                total -= nums[left]
+                left += 1
             
-            total += i
-            if total - goal in pre:
-                ans += pre[total - goal]
-            
-            pre[total] = pre.get(total,0) + 1
+            ans += right - left + 1
         
-        return ans
+        total = 0
+        ans2 = 0
+        left = 0
+        for right in range(len(nums)):
+            total += nums[right]
+            while left <= right and total > goal:
+                total -= nums[left]
+                left += 1
+            
+            ans2 += right - left + 1
+    
+        return ans2 - ans
+        
+        
+        
+        
+       
       
