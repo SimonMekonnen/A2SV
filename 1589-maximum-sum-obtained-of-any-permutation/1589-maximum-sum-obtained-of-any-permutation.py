@@ -1,7 +1,7 @@
 class Solution:
     def maxSumRangeQuery(self, nums: List[int], r: List[List[int]]) -> int:
         
-        pre = [0] * 100004
+        pre = [0] * (len(nums) + 2)
         
         for s,e in r:
             pre[s] += 1
