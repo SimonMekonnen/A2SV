@@ -1,30 +1,25 @@
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        def contains(sc,tc):
+        def valid(tc,ts):
             for i in tc:
-                if i not in sc or sc[i] < tc[i]:
+                if i not in ts or ts[i] < tc[i]:
                     return False
             return True
-        Tcount = Counter(t)
-        Scount = defaultdict(int)
+        tc = Counter(t)
         left = 0
-        right = 0
-        ans = math.inf
-        l = 0
+        ts = defaultdict(int)
+        l= 0
         r = 0
-        if len(s)<len(t):
-            return ""
-        while right <= len(s):
-            b = contains(Scount,Tcount)
-            if b == False:
-                if right!= len(s):
-                    Scount[s[right]]+=1
-                right+=1
-            else:
-                if right - left < ans:
+        ans = len(s)+1
+        for right in range(len(s)):
+            ts[s[right]]+=1
+            while valid(tc,ts) == True:
+                if ans > right - left + 1:
+                    ans = right - left + 1
                     l = left
                     r = right
-                    ans = right - left
-                Scount[s[left]]-=1
+                ts[s[left]]-=1
                 left+=1
-        return s[l:r]
+        return s[l:r+1] if ans != len(s)+1 else ""
+
+        
