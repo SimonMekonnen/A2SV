@@ -11,7 +11,7 @@ class TopVotedCandidate:
                 t = persons[i]
             persons[i] = t
             
-        print(self.persons)
+   
             
     def q(self, t: int) -> int:
         
