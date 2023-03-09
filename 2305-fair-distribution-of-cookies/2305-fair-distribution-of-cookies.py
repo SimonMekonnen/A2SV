@@ -18,6 +18,6 @@ class Solution:
                     minscore(index + 1)
                     score[i] -= cookies[index]
                 
-        
+        cookies.sort(reverse = True)
         minscore(0)
         return result
