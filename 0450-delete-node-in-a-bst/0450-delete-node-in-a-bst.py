@@ -8,8 +8,8 @@ class Solution:
     
     def getmin(self,root):
         cur = root
-        while cur and cur.left:
-            cur = cur.left
+        while cur and cur.right:
+            cur = cur.right
         
         return cur
        
@@ -35,10 +35,9 @@ class Solution:
             elif not root.right:
                 return root.left
             
-            c = self.getmin(root.right)
-    
+            c = self.getmin(root.left)
             root.val = c.val
-            root.right = self.deleteNode(root.right,c.val)
+            root.left = self.deleteNode(root.left,c.val)
             
             
             
