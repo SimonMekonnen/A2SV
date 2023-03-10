@@ -5,21 +5,17 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+    def isValidBST(self, root: Optional[TreeNode],u = inf,l = -inf) -> bool:
         
-        def helper(root):
-            if not root:
-                return []
+        if not root:
+            return True
+        if root.val >= u or root.val <= l:
+            return False
         
-            left = helper(root.left)
-            right = helper(root.right)
+        return self.isValidBST(root.left,root.val,l) and self.isValidBST(root.right,u,root.val)
+            
         
-            return left + [root.val] + right
-        c = helper(root)
         
-        for i in range(1,len(c)):
-            if c[i] <= c[i - 1]:
-                return False
-        return True
+               
 
         
