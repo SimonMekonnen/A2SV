@@ -14,6 +14,8 @@ class Solution:
         
         while que:
             
+            ans.append(que[-1].val)
+            
             for i in range(len(que)):
                 
                 cur = que.popleft()
@@ -22,7 +24,7 @@ class Solution:
                 if cur.right:
                     que.append(cur.right)
             
-            ans.append(cur.val)
+            
         
         return ans
                 
