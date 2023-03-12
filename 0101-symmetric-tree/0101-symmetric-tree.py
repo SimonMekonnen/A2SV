@@ -5,9 +5,8 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        
-        def helper(left,right):
+       
+    def helper(self, left,right):
             
             if not left and not right:
                 
@@ -17,9 +16,11 @@ class Solution:
                 
                 return False
             
-            return helper(left.left, right.right) and helper(left.right,right.left)   
+            return self.helper(left.left, right.right) and self. helper(left.right,right.left)
         
-        return helper(root.left,root.right)
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+     
+        return self.helper(root.left,root.right)
             
         
     
