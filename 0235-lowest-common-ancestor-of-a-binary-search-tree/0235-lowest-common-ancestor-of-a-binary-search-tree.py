@@ -6,36 +6,12 @@
 #         self.right = None
 
 class Solution:
-    def path (self,root,path1,p):
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         cur = root
         while cur:
-            path1.append(cur)
-            if cur.val == p.val:
-                break
-            
+            if q.val >= cur.val >= p.val or q.val <= cur.val <= p.val :
+                return cur
             elif cur.val > p.val:
                 cur = cur.left
-            
             else:
                 cur  = cur.right
-    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        
-        
-        path1 = []
-        path2 = []
-       
-        self.path(root,path1,p)
-        self.path(root,path2,q)
-        
-        for i in range(min(len(path1),len(path2))):
-            if path1[i].val != path2[i].val:
-                return path1[i - 1]
-        
-        return path1[i]
-        
-        
-            
-            
-            
-                
-        
