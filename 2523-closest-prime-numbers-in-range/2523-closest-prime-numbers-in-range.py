@@ -13,7 +13,10 @@ class Solution:
                     while j <= right:
                         is_prime[j] = False
                         j += i
-                i += 1
+                if i == 2:
+                    i += 1
+                else:
+                    i += 2
            now = [i for i in range(len(is_prime)) if is_prime[i] == True]
            last = [-1 ,-1]
 
