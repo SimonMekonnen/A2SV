@@ -11,6 +11,8 @@ class Solution:
                 now = gcd(now,nums[j])
                 if now == k:
                     ans += 1
+                if now < k:
+                    break
     
         return ans
                 
