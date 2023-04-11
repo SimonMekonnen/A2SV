@@ -1,0 +1,22 @@
+N = int(input())
+graph = []
+notans = []
+for i in range(N):
+   graph.append(list(map(int,input().split())))
+sink = []
+for row in range(N):
+   count = 0
+   for col in range(N):
+      if graph[row][col] == 1:
+               count += 1
+               notans.append(col + 1)  
+   if count == 0:
+      sink.append(row + 1)
+
+source = []
+for i in range(1,N + 1):
+    if i not in notans:
+       source.append(i)
+       
+print(len(source),*source)
+print(len(sink) , *sink)
