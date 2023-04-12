@@ -5,15 +5,12 @@ class Solution:
         np = set()
         
         for i in edges:
-            
-            possible.add(i[0])
+            if i[1] in possible:
+                possible.remove(i[1])
+            if i[0] not in np:
+                possible.add(i[0])
             np.add(i[1])
         
-        ans = []
-        for i in possible:
-            if i not in np:
-                ans.append(i)
-        
-        return ans
+        return possible
             
         
