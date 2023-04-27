@@ -9,21 +9,25 @@ class Employee:
 
 class Solution:
     def getImportance(self, employees: List['Employee'], id: int) -> int:
+        
         importa = {}
         subs = {}
         for i in employees:
             importa[i.id] = i.importance
             subs[i.id] = i.subordinates
-        
-        que = deque([id])
         count = 0
-        while que:
-            s = len(que)
-            for i in range(s):
-                now = que.popleft()
-                count += importa[now]
-                sub = subs[now]
-                que.extend(sub)
-   
+        def helper(id):
+            nonlocal count
+            count += importa[id]
+            if not subs[id]:
+                return 
+            for i in subs[id]:
+                helper(i)
+                
+        helper(id)
         return count
+#        
+        
+#         def helper(id)
+        
         
