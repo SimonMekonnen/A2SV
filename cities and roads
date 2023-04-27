@@ -1,0 +1,9 @@
+N = int(input())
+
+count = set()
+for _ in range(N):
+     now = list(input())
+     for i in range(0,len(now)):
+        if now[i] == "1":
+             count.add((_,i))
+print(len(count)//2)
