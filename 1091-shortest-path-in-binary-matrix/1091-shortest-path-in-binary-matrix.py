@@ -10,15 +10,19 @@ class Solution:
         while que:
             size = len(que)
             for _ in range(size):
+                
                 now = que.popleft()
+                
                 if (len(grid) - 1 , len(grid) - 1) == now:
                     return time + 1
-                for i in dire:
-               
-                
-                    if (0 <= now[0] + i[0] < len(grid)) and (0 <= now[1] + i[1] < len(grid)) and (grid[now[0] + i[0]][now[1] + i[1]] == 0) and ((now[0] + i[0],now[1] + i[1]) not in visited) :
-                        que.append((now[0] + i[0],now[1] + i[1]))
-                        visited.add((now[0] + i[0],now[1] + i[1]))
+                for x,y in dire:
+                    
+                    newx = now[0] + x
+                    newy = now[1] + y
+                    
+                    if (0 <= newx  < len(grid)) and (0 <= newy < len(grid)) and (grid[newx][newy] == 0) and ((newx,newy) not in visited) :
+                        que.append((newx,newy))
+                        visited.add((newx,newy))
                         
             time += 1
 
