@@ -13,16 +13,15 @@ class Solution:
         while que:
             
             cur = que.popleft()
-            ans.append(cur)
+            if cur in r:
+                ans.append(cur)
             for ing in graph[cur]:
                 table[ing] -= 1
                 if table[ing] == 0:
                     que.append(ing)
-        realans = set()
-        for i in ans:
-            if i in r:
-                realans.add(i)
-        return realans
+        
+        return ans
+     
     
             
         
