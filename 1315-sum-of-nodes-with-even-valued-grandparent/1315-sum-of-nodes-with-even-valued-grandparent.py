@@ -26,7 +26,6 @@ class Solution:
         for i in table:
             if table[i] % 2 == 0:
                 c = childs(i)
-                print(c)
                 for j in c:
                     if j in table:
                         count += table[j]
