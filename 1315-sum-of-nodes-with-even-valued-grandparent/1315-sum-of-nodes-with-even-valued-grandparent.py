@@ -6,29 +6,19 @@
 #         self.right = right
 class Solution:
     def sumEvenGrandparent(self, root: TreeNode) -> int:
-        stk = [(1,root)]
-        table = defaultdict(int)
-        def childs(i):
-            lc = 2*i
-            rc = 2*i + 1
-    
-            return [2*lc,2*lc + 1,2*rc,2*rc + 1]
-       
-        while stk:
-            cur = stk.pop()
-            table[cur[0]] = cur[1].val
-            if cur[1].left:
-                stk.append((2*cur[0],cur[1].left))
-            if cur[1].right:
-                stk.append((2*cur[0] + 1,cur[1].right))
-        count = 0
+        ans = [0]
+        def dfs(parent,gp,root):
+            if not root:
+                return 
+            
+            if gp % 2 == 0:
+                ans[0] += root.val
+            
+            dfs(root.val,parent,root.left)
+            dfs(root.val,parent,root.right)
         
-        for i in table:
-            if table[i] % 2 == 0:
-                c = childs(i)
-                for j in c:
-                    if j in table:
-                        count += table[j]
-        return count
+        dfs(7,7,root)
+        return ans[0]
+       
         
         
