@@ -10,23 +10,19 @@ class Solution:
         arr = []
         def sumNumbers(root,ar):
             nonlocal arr
-            if not root.left and not root.right:
-                ar.append(str(root.val))
-                arr.append(ar.copy())
+            if not root:
                 return 
             ar.append(str(root.val))
-            if root.left:
-                sumNumbers(root.left,ar)
-                ar.pop()
-            if root.right:
-                sumNumbers(root.right,ar)
-                ar.pop()
-           
+            sumNumbers(root.left,ar)
+            sumNumbers(root.right,ar)
+            if not root.left and not root.right:
+                arr.append(ar.copy())
+            ar.pop()
+            
         sumNumbers(root,[])
         ans = 0
         for i in arr:
             ans += int("".join(i))
-
         return ans
         
         
