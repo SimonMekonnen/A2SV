@@ -8,6 +8,7 @@ class Solution:
         
         dirs = [(0,1),(1,0),(-1,0),(0,-1),(1,1),(-1,-1),(1,-1),(-1,1)]
         
+        stk = [(cx,cy)]
         visited = set()
         visited.add((cx,cy))
         n,m = len(board),len(board[0])
@@ -23,21 +24,19 @@ class Solution:
                     count += 1
                     
             return count
-        
-        def dfs(cx,cy):
-            count  = countMines(cx,cy)
-            if count:
-                board[cx][cy] = str(count)
-                return 
-        
-            board[cx][cy] = "B"
-            for x,y in dirs:
-                newx = x + cx
-                newy = y + cy
-                if inbound(newx,newy) and board[newx][newy] == "E":
-                    dfs(newx,newy)
-            
-        dfs(cx,cy)
+                
+        while stk:
+            x,y = stk.pop()
+            count = countMines(x,y)
+            if count != 0:
+                board[x][y] = str(count)
+            else:
+                board[x][y] = "B"
+                for cx,cy in dirs:
+                    newx , newy = x + cx, y + cy
+                    if inbound(newx,newy) and board[newx][newy] == "E" and (newx,newy) not in visited:
+                        stk.append((newx,newy))
+                        visited.add((newx,newy))
         return board
                     
             
