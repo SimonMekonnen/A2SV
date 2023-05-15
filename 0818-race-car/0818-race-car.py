@@ -1,31 +1,34 @@
 class Solution:
     def racecar(self, target: int) -> int:
-        
-        visited  = set([(target,-1)])
-        que = deque([[target,-1]])
-        level = 0
-        while que:
-            size = len(que)
-            for _ in range(size):
-                cur = que.popleft()
-                if cur[0] == 0:
-                    return level
-                R = [cur[0],-1 if cur[1] > 0 else 1]
-                A = [cur[0] + cur[1],cur[1] * 2]
-                if tuple(R) not in visited and -target <= R[0] <= target:
-                    if R[0] == 0:
-                        return level + 1
-                    que.append(R)
-                    visited.add(tuple(R))
-                if tuple(A) not in visited and -target <= A[0] <= target :
-                    if A[0] == 0:
-                        return level + 1
-                    que.append(A)
-                    visited.add(tuple(A))
-    
-            level += 1
-        
+
+        q = deque()
+        q.append((0 , 1))
+        seen =  set()
+        seen.add((0 , 1))
+
+        pop_count = 1
+        levels =  0
+        while q :
+
+
+            for _ in range(pop_count):
+                pos  , speed  = q.popleft()
+                if pos == target:
+                    return levels
                 
+                # use a 
+
+                pos1 , speed1 = pos + speed , speed * 2
+                
+                speed2  = -1 if speed > 0 else 1
+
+                if (pos1 , speed1 ) not in seen:
+                    q.append((pos1 , speed1))
+                    seen.add((pos1 , speed1))
+                
+                if (pos , speed2) not in seen:
+                    q.append((pos , speed2))
+                    seen.add((pos , speed2))
             
-        
-        
+            pop_count = len(q)
+            levels += 1
