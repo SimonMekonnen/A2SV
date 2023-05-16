@@ -27,14 +27,33 @@ class Solution:
             for col in range(len(grid[0])):
                 if (row,col) not in seen and grid[row][col] == 1:
                     arr.append(bfs(row,col))
-    
-        ans = float("inf")
+        visited = set()
         for x,y in arr[0]:
-            for X,Y in arr[1]:
-                ans = min(abs(x - X) + abs(y - Y),ans)
-                if ans == 2:
-                    break
-        return  ans - 1
+            grid[x][y] = 0
+            visited.add((x,y))
+        
+        que = deque(list(arr[0]))
+        level = 0
+        while que:
+            size = len(que)
+            for _ in range(size):
+                x,y = que.popleft()
+                if grid[x][y] == 1:
+                    return level - 1
+                for dx,dy in dirs:
+                    newx = x + dx
+                    newy = y + dy
+
+                    if inbound(newx,newy) and ((newx,newy) not in visited):
+                        que.append([newx,newy])
+                        visited.add((newx,newy))
+                        seen.add((newx,newy))
+            level += 1
+        
+            
+        
+        
+      
                     
         
         
