@@ -27,6 +27,7 @@ class Solution:
             for col in range(len(grid[0])):
                 if (row,col) not in seen and grid[row][col] == 1:
                     arr.append(bfs(row,col))
+                    break
         visited = set()
         for x,y in arr[0]:
             grid[x][y] = 0
