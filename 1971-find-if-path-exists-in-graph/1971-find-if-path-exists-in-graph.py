@@ -6,18 +6,19 @@ class Solution:
         def find(v):
             cur = v
             while cur != parent[cur]:
-                cur = parent[cur]     
+                cur = parent[cur]   
+            
             return cur
         
         def union(v1,v2):
             parentv1= find(v1)
             parentv2 = find(v2)
-            if size[v1] < size[v2]:
+            if size[parentv1] < size[parentv2]:
                 parent[parentv1] = parentv2
-                size[parentv1] += size[parentv2]
+                size[parentv2] += size[parentv1]
             else:
                 parent[parentv2] = parentv1
-                size[parentv2] += size[parentv1]
+                size[parentv1] += size[parentv2]
                 
             
         for v1 , v2 in edges:
