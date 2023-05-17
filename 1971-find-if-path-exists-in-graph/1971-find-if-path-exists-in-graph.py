@@ -8,10 +8,7 @@ class Solution:
             while cur != parent[cur]:
                 cur = parent[cur]
                 
-            while v != parent[v]:
-                c = v
-                v = parent[v]
-                parent[c] = cur
+        
                    
             return cur
         
