@@ -6,8 +6,13 @@ class Solution:
         def find(v):
             cur = v
             while cur != parent[cur]:
-                cur = parent[cur]   
-            
+                cur = parent[cur]
+                
+            while v != parent[v]:
+                c = v
+                v = parent[v]
+                parent[c] = cur
+                   
             return cur
         
         def union(v1,v2):
