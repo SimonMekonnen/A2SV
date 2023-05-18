@@ -7,7 +7,7 @@ class Solution:
             graph[y].add((x,d))
             
         que = deque([1])
-        ans = []
+        ans = float('inf')
         visited = set()
         visited.add(1)
         while que:
@@ -16,11 +16,11 @@ class Solution:
             for neigh in graph[cur]:
                 if neigh[0] not in visited:
                     que.append(neigh[0])    
-                    ans.append(neigh[1])
-          
+                    ans = min(ans,neigh[1])
+                    
+        return ans
         
-        return min(ans)
-            
+    
         
         
         
