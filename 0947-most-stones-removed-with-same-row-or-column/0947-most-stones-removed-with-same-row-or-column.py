@@ -38,11 +38,8 @@ class Solution:
         
         for i in parent:
             ans[parent[i]] += 1
-        res = 0
-        for i in ans:
-            res += (ans[i] - 1)
-        print(parent)
-        return res
+    
+        return len(stones) - len(ans)
             
         
         
