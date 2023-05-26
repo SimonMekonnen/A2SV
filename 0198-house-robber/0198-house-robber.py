@@ -1,12 +1,23 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        @cache
-        def dp(index):
-            if index >= len(nums):
-                return 0
-            return nums[index] + max(dp(index + 2),dp(index + 3))
-         
-        
-        return max(dp(0),dp(1))
+        n = len(nums)
+        memo = {}
+        def dp(idx): 
+             
+            if idx  in memo: 
+                return memo[idx] 
+ 
+            if idx == 0: 
+                return nums[0] 
+ 
+            if idx == 1: 
+                return max(nums[0], nums[1]) 
+ 
+             
+            memo[idx] = max(dp(idx - 1), nums[idx] + dp(idx-2)) 
+            return memo[idx] 
+             
+ 
+        return dp(n - 1)
         
         
