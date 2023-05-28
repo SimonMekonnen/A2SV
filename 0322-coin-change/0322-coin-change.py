@@ -1,21 +1,12 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
+        dp = [float('inf') for i in range(amount + 1)]
+        dp[0] = 0
         
-        que = deque([0])
-        level = 0
-        visited = set()
-        while que:
-            size = len(que)
-            for i in range(size):
-                cur = que.popleft()
-                if cur == amount:
-                    return level
-                for i in range(len(coins)):
-                    if cur + coins[i] <= amount and (cur + coins[i] , i) not in visited:
-                        que.append(cur + coins[i])
-                        visited.add((cur + coins[i] , i))
+        for i in range(1,amount + 1):
+            
+            for j in range(len(coins)):
+                if coins[j] <= i:
+                    dp[i] = min(dp[i],dp[i - coins[j]] + 1)
         
-            level += 1
-        return -1
-                
-        
+        return dp[-1] if dp[-1] != float('inf') else -1
