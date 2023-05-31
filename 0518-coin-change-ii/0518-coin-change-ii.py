@@ -1,14 +1,11 @@
 class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
-        @cache
-        def dp(target,index):
-            if target == 0:
-                return 1
-            if target < 0 or index >= len(coins):
-                return 0
-            
-            pick = dp(target - coins[index],index)
-            dontpick = dp(target,index + 1)
-            return pick + dontpick
-        return dp(amount,0)
+        dp = [0  for i in range(amount + 1)]
+        dp[0] = 1
+        for x in coins:
+            for i in range(amount + 1):
+                if i - x >= 0:
+                    dp[i] += dp[i - x]       
+        return dp[-1]
+      
         
