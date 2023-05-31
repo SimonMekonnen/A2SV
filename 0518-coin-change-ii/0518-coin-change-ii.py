@@ -1,6 +1,5 @@
 class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
-        coins.sort()
         @cache
         def dp(target,index):
             if target == 0:
