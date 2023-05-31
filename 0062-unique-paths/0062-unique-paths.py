@@ -1,6 +1,6 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        @cache
+        memo = {}
         def dp(row, col):
             
             
@@ -8,7 +8,10 @@ class Solution:
                 return 0
             if row == m - 1 and col == n - 1:
                 return 1
-            return dp(row +1, col) + dp(row, col + 1)
+            if (row,col) not in memo:
+                memo[(row,col)] = dp(row +1, col) + dp(row, col + 1)
+            
+            return memo[(row,col)]
                 
             
             
