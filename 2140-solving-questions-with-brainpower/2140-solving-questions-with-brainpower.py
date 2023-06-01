@@ -9,5 +9,5 @@ class Solution:
             toadd = dp[i + questions[i][1] + 1] if i + questions[i][1] + 1 < len(questions) else 0
             dp[i] = max(questions[i][0] + toadd,dp[i + 1])
             
-        return max(dp)
+        return dp[0]
         
