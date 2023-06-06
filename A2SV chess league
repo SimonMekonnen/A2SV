@@ -1,0 +1,50 @@
+s,n = list(map(int,input().split()))
+    
+nums = list(map(int,input().split()))
+ 
+def winner(left,right):
+    mid = (left + right)//2
+ 
+    if left == right:
+        return [left]
+    
+    l = winner(left,mid)
+    r = winner(mid + 1,right)
+    
+    # l.sort(key = lambda x : nums[x])
+    # r.sort(key = lambda x : nums[x])
+    arr = []
+    p1 = 0
+    p2 = 0
+    # print(l, r)
+    while p1 < len(l) or p2 < len(r):
+        p1val = p1 if p1 < len(l) else float('inf')
+        p2val = p2 if p2 < len(r) else float('inf')
+        
+        if p1val == float('inf') or p2val == float('inf'):
+            if p1val != float('inf'):
+                arr.append(l[p1val])
+                p1 += 1
+            else:
+                arr.append(r[p2val])
+                p2 += 1
+        elif nums[l[p1val]] <= nums[r[p2val]]:
+            if abs(nums[l[p1val]] - nums[r[p2val]]) <= n:
+                arr.append(l[p1val])
+ 
+            p1+=1 
+        else:
+            if abs(nums[l[p1val]] - nums[r[p2val]]) <= n:
+                arr.append(r[p2val])
+            p2 += 1
+            
+    # 200 600 700 inf
+    #     |
+    # -inf 400 500 inf
+    #      |
+    
+    
+    return arr
+result = winner(0, len(nums) - 1)
+result.sort()
+print(*[i + 1 for i in result])
