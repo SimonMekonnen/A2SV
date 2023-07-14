@@ -8,26 +8,21 @@ class Solution:
         
         ans = 1
         def dfs(node):
-            arr = []
             nonlocal ans
+            best = 0
+            second = 0
             for neigh in graph[node]:
                 now = dfs(neigh)
                 if s[parent[neigh]] != s[neigh]:
-                    arr.append(now)
+                    if now > best:
+                        second = best
+                        best = now
+                    elif now > second:
+                        second = now
+
+            ans = max(ans,best + second + 1)
             
-            if len(arr) >= 2:
-                arr.sort()
-                best = arr.pop()
-                second = arr.pop()
-                ans = max(ans,best + second + 1)
-                return best + 1
-            if len(arr) == 1:
-                best = arr.pop()
-                ans = max(ans,best + 1)
-                return best + 1
-            
-            else:
-                return 1
+            return best + 1
             
                 
         dfs(0)
