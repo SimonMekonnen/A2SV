@@ -1,28 +1,31 @@
 class Solution:
     def longestCycle(self, edges: List[int]) -> int:
-        max_len = -1
-        def dfs(node, coloring, numbering, count):
-            nonlocal max_len
-            if coloring[node] == 1:
-                return
+        n = len(edges)
+        colors = [0 for _ in range(n)]
+        stack = {}
+        ans = 0
+        def dfs(node, i):
+            nonlocal ans
+            if colors[node] == 1:
+                ans = max(ans, i - stack[node])
+                return 
+            if colors[node] == 2:
+                return 
             
-            if coloring[node] == 2:
-                # print("cycle: ", node)
-                max_len = max(max_len, count - numbering[node])
-                return
+            stack[node] = i
+            colors[node] = 1
+            if edges[node] != -1:
+                
+                dfs(edges[node], i + 1)
             
-            if edges[node] == -1:
-                return
+#             del stack[node]
             
-            coloring[node] = 2
-            numbering[node] = count
-            dfs(edges[node], coloring, numbering, count + 1)  
-            coloring[node] = 1
-            
-        coloring = defaultdict(int)
-        numbering = defaultdict(int)
-        for node in range(len(edges)):
-            dfs(node, coloring, numbering, 0)
+            colors[node] = 2
+            return 
         
-        return max_len if max_len else -1
-            
+        for i in range(n):
+            if not colors[i]:
+                dfs(i, 0)
+        return ans if ans else -1
+                
+        
