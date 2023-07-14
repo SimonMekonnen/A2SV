@@ -34,7 +34,13 @@ class Solution:
         
         for i in range(len(edges)):
             if visited[i] != 1 and incycle[i] == 1:
-                dfs(i,0)
+                count = 1
+                n = i
+                while  edges[n] != i:
+                    count += 1
+                    visited[n] = 1
+                    n = edges[n]
+                ans = max(ans,count)
         return ans if ans else -1
                 
                 
