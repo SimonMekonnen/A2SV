@@ -10,7 +10,7 @@ class Solution:
                 return
             if index >= len(s):
                 if count == 4:
-                    ans.add(out)
+                    ans.add(out[:len(out) - 1])
                 return 
             
             if int(s[index : index + 1]) <= 255 and str(int(s[index : index + 1])) == s[index : index + 1] :
@@ -22,10 +22,8 @@ class Solution:
             
             return 
         bt(0,'',0)
-        res = []
-        for i in ans:
-            res.append(i[ : len(i) - 1])
-        return res
+  
+        return ans
                 
                 
            
