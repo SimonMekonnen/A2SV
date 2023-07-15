@@ -9,17 +9,16 @@ class Solution:
   
         postarget = set()
         possource = set()
-        for i in range(len(routes)):
-            
-            for j in routes[i]:
-                if j == target:
-                    postarget.add(i)
-                if j == source:
-                    possource.add(i)
-                for k in range(i + 1,len(routes)):
-                    if j in routes[k]:
-                        graph[i].add(k)
-                        graph[k].add(i)
+        for i, r1 in enumerate(routes):
+            if source in r1:
+                possource.add(i)
+            if target in r1:
+                postarget.add(i)
+            for j in range(i+1, len(routes)):
+                r2 = routes[j]
+                if any(r in r2 for r in r1):
+                    graph[i].add(j)
+                    graph[j].add(i)
         que = deque(possource)
         level = 1
         visited = [0 for i in range(len(routes))]
