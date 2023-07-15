@@ -7,25 +7,28 @@ class Solution:
         
         graph = defaultdict(set)
   
-        dic = defaultdict(set)
+        postarget = set()
+        possource = set()
         for i in range(len(routes)):
             
             for j in routes[i]:
-                dic[j].add(i)
+                if j == target:
+                    postarget.add(i)
+                if j == source:
+                    possource.add(i)
                 for k in range(i + 1,len(routes)):
                     if j in routes[k]:
                         graph[i].add(k)
                         graph[k].add(i)
-        que = deque(dic[source])
+        que = deque(possource)
         level = 1
         visited = [0 for i in range(len(routes))]
         while que:
             size = len(que)
             for i in range(size):
                 now = que.popleft()
-                for i in routes[now]:
-                    if i == target:
-                        return level
+                if now in postarget:
+                    return level
                 for neigh in graph[now]:
                     if not visited[neigh]:
                         que.append(neigh)
