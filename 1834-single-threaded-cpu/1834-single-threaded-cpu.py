@@ -6,14 +6,7 @@ class Solution:
         index.sort(key  = lambda x : tasks[x])
         ans = []
         heap = []
-        first = tasks[index[0]][0]
-        tobe = len(tasks)
-        for i in range(len(tasks)):
-
-            if tasks[index[i]][0] > first:
-                tobe = i
-                break
-            heappush(heap,(tasks[index[i]][1],index[i]))
+        tobe = 0
         while tobe < len(tasks):
             if heap:
                 cur = heappop(heap)
