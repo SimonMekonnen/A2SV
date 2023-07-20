@@ -2,6 +2,7 @@ class Solution:
     def friendRequests(self, n: int, restrictions: List[List[int]], requests: List[List[int]]) -> List[bool]:
         
         parent = [i for i in range(n)]
+        size = [1 for i in range(n)]
         def find(x):
             cur = x
             while cur != parent[cur]:
@@ -23,7 +24,13 @@ class Solution:
                     pos = False
                     break
             if pos:
-                parent[xparent] = yparent
+                if size[xparent] > size[yparent]:
+                    parent[yparent] = xparent
+                    size[xparent] += size[yparent]
+                else:
+                    parent[xparent] = yparent
+                    size[yparent] += size[xparent]
+                    
             ans.append(pos)
         return ans
 
