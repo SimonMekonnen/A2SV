@@ -19,7 +19,7 @@ class Solution:
             for i,j in restrictions:
                 ip = find(i)
                 jp = find(j)
-                if  [jp,ip] == [xparent,yparent] or [ip,jp] == [xparent,yparent]:
+                if  (jp == xparent and ip == yparent) or (jp == yparent and ip == xparent):
                     pos = False
                     break
             if pos:
