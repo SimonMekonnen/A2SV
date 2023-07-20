@@ -3,11 +3,14 @@ class Solution:
         
         parent = [i for i in range(n)]
         def find(x):
-            if parent[x] == x:
-                return x
-            
-            parent[x] = find(parent[x])
-            return parent[x]
+            cur = x
+            while cur != parent[cur]:
+                cur = parent[cur]
+            while x != parent[x]:
+                v = parent[x]
+                parent[x] = cur
+                x = v
+            return cur
         ans = []   
         for x, y in requests:
             xparent = find(x)
