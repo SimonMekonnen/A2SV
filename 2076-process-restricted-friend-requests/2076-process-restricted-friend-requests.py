@@ -18,6 +18,7 @@ class Solution:
                 jp = find(j)
                 if  sorted([jp,ip]) == sorted([xparent,yparent]):
                     pos = False
+                    break
             if pos:
                 parent[xparent] = yparent
             ans.append(pos)
