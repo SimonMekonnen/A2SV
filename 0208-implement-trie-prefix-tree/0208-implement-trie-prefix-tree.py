@@ -9,7 +9,6 @@ class Trie:
 
     def __init__(self):
         self.root = TrieNode()
-        self.dic = set()
     def insert(self, word: str) -> None:
         cur = self.root
         for i in range(len(word)):
@@ -18,11 +17,17 @@ class Trie:
                 cur.children[car] = TrieNode()
             cur = cur.children[car]
         cur.is_end = True
-        self.dic.add(word)
     def search(self, word: str) -> bool:
-        if word in self.dic:
-            return True
-        return False
+        cur = self.root
+        pos = 1
+        for ch in word:
+            idx = ord(ch) - ord('a')
+            if not cur.children[idx]:
+                pos = 0
+                break
+            cur = cur.children[idx]
+        return cur.is_end and pos
+    
     def startsWith(self, prefix: str) -> bool:
         
         cur = self.root
