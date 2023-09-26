@@ -1,15 +1,17 @@
 class Solution:
     def lastStoneWeightII(self, stones: List[int]) -> int:
         
-       @cache
-       def dp(index,total):
-            if index >= len(stones):
-                return total if total >= 0 else inf
-            
-            add = dp(index + 1,total + stones[index])
-            sub = dp(index + 1,total - stones[index])
-            return min(add,sub)
+    
+        dp = [[0] * 6002 for i in range(len(stones)) ]
+        dp[0][stones[0] + 3000] = 1
+        dp[0][-stones[0] + 3000] = 1
         
-       return dp(0,0)
-            
+        for i in range(len(dp) - 1):
+            for j in range(6001):
+                if dp[i][j] == 1:
+                        dp[i + 1][j + stones[i + 1]] = 1
+                        dp[i + 1][j - stones[i + 1]] = 1
+        for i in range(3000,len(dp[0])):
+            if dp[-1][i] == 1:
+                return i - 3000
             
