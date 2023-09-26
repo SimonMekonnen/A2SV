@@ -19,26 +19,22 @@ class Trie:
         cur.is_end = True
     def search(self, word: str) -> bool:
         cur = self.root
-        pos = 1
         for ch in word:
             idx = ord(ch) - ord('a')
             if not cur.children[idx]:
-                pos = 0
-                break
+                return False
             cur = cur.children[idx]
-        return cur.is_end and pos
+        return cur.is_end
     
     def startsWith(self, prefix: str) -> bool:
         
         cur = self.root
-        pos = 1
         for ch in prefix:
             idx = ord(ch) - ord('a')
             if not cur.children[idx]:
-                pos = 0
-                break
+                return False
             cur = cur.children[idx]
-        return pos
+        return True
     
 
 # Your Trie object will be instantiated and called as such:
