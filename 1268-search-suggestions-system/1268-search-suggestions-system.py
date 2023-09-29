@@ -44,11 +44,7 @@ class Trie:
                 cur.children[car] = TrieNode()
             if len(cur.children[car].ans) < 3:
                 heappush(cur.children[car].ans,word)
-            else:
-                c = cur.children[car].ans
-                c.sort()
-                b = c.pop()
-                c.append(min(b,word))
+   
                 
             cur = cur.children[car]
        
