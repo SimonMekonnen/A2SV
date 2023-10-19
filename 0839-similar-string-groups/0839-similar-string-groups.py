@@ -10,6 +10,8 @@ class Solution:
             for i in range(len(x)):
                 if x[i] != y[i]:
                     arr.append(sorted([x[i],y[i]]))
+                if len(arr) >= 3:
+                    break
             
             if len(arr) != 2:
                 return False
@@ -43,7 +45,6 @@ class Solution:
                 size[parentx] += size[parenty]
                 
             
-        
         for i in range(len(strs)):
             for j in range(i + 1,len(strs)):
                 if valid(strs[i],strs[j]):
