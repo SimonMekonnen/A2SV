@@ -19,6 +19,7 @@ class Solution:
         
         
         parent = [i for i in range(len(strs))]
+        size = [1 for i in range(len(strs))]
         def find(x):
             cur = x
             while parent[cur] != cur:
@@ -34,11 +35,17 @@ class Solution:
         def union(x,y):
             parentx = find(x)
             parenty = find(y)
-            parent[parentx] = parenty
+            if size[parentx] <= size[parenty]:
+                parent[parentx] = parenty
+                size[parenty] += size[parentx]
+            else:
+                parent[parenty] = parentx
+                size[parentx] += size[parenty]
+                
             
         
         for i in range(len(strs)):
-            for j in range(len(strs)):
+            for j in range(i + 1,len(strs)):
                 if valid(strs[i],strs[j]):
                     union(i,j)
         for i in range(len(strs)):
