@@ -7,7 +7,7 @@
 class Solution:
     def delNodes(self, root: Optional[TreeNode], to_delete: List[int]) -> List[TreeNode]:
         
-        
+        to_delete = set(to_delete)
         ans = []
         
         def dfs(root):
@@ -24,8 +24,10 @@ class Solution:
                 if right:
                     ans.append(right)
                 return None
+            
             root.left = left
             root.right = right
+            
             return root
         if dfs(root):
             ans.append(root)
