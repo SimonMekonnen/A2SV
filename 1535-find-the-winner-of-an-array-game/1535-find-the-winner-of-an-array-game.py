@@ -6,27 +6,30 @@ class Solution:
             return max(arr)
     
         que = deque(arr)
-        dic = defaultdict(int)
+        val = max(arr[0],arr[1])
+        count = 0
         while True:
             first = que.popleft()
             second = que.popleft()
-            
             if first > second:
-                dic[first] += 1
+                if val == first:
+                    count += 1
+                else:
+                    count = 1
+                val = first
                 que.appendleft(first)
                 que.append(second)
-                dic[second] = 0
-            if second > first:
-                dic[second] += 1
+                
+            else:
+                if val == second:
+                    count += 1
+                else:
+                    count = 1
+                val = second
                 que.appendleft(second)
                 que.append(first)
-                dic[first] = 0
-            
-            if dic[first] == k:
-                return first
-            if dic[second] == k:
-                return second
-            
-            
+                
+            if count == k:
+                return val
             
   
