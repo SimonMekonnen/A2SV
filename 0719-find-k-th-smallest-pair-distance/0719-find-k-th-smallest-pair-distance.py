@@ -3,7 +3,7 @@ class Solution:
         
         nums.sort()
         left = 0 
-        right = max(nums)
+        right = nums[-1] - nums[0]
         ans = 0
         
         while left <= right:
