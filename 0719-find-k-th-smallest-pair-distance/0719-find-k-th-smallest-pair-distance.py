@@ -3,7 +3,7 @@ class Solution:
         
         nums.sort()
         left = 0 
-        right = 10**7
+        right = 10**6
         ans = 0
         
         while left <= right:
@@ -27,3 +27,4 @@ class Solution:
                 left = mid + 1
         return ans
             
+    
