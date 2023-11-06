@@ -9,16 +9,15 @@ class Solution:
         while left <= right:
             mid = (left + right) // 2
             
+        
             count = 0
+            l = 0
+            for r in range(len(nums)):
+                while nums[r] - nums[l]  > mid:
+                    l += 1
+                
+                count += (r - l)
             
-            for i in range(len(nums) - 1):
-                cur_index = bisect_right(nums,mid + nums[i])
-                
-                c = cur_index
-                if c >= len(nums) or nums[c] > mid + nums[i]:
-                    c -= 1
-                
-                count += (c - i)
             
             if count >= k:
                 ans = mid
