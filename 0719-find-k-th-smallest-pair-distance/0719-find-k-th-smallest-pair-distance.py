@@ -3,7 +3,7 @@ class Solution:
         
         nums.sort()
         left = 0 
-        right = 10**6
+        right = max(nums)
         ans = 0
         
         while left <= right:
