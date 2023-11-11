@@ -19,12 +19,14 @@ class Graph:
         
 
     def addEdge(self, edge: List[int]) -> None:
+        
         x,y,w = edge
-        self.dp[x][y] = min(self.dp[x][y],w)
-        for i in [x,y]:
-            for row in range(self.t):
-                    for col in range(self.t):
-                        self.dp[row][col] = min(self.dp[row][col],self.dp[row][i] + self.dp[i][col])
+        if self.dp[x][y] > w:
+            self.dp[x][y] = min(self.dp[x][y],w)
+            for i in [x,y]:
+                for row in range(self.t):
+                        for col in range(self.t):
+                            self.dp[row][col] = min(self.dp[row][col],self.dp[row][i] + self.dp[i][col])
 
     
 
