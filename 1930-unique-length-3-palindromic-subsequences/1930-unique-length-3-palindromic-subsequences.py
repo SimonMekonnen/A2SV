@@ -16,7 +16,7 @@ class Solution:
             
             for j in range(26):
                 if cur + (chr(ord('a') + j)) in dic:
-                    ans.add(cur + cur + (chr(ord('a') + j)) + cur )
+                    ans.add(cur + cur + (chr(ord('a') + j)) )
             
             for j in before:
                 dic.add(j + cur)
