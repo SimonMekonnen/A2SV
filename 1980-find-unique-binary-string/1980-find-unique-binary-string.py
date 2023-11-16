@@ -7,6 +7,7 @@ class Solution:
             if len(s) == len(nums):
                 if s not in nums:
                     ans.append(s)
+                return
             
             zero = bt(s + "0")
             one = bt(s + "1")
