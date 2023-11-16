@@ -1,6 +1,6 @@
 class Solution:
     def findDifferentBinaryString(self, nums: List[str]) -> str:
-   
+        nums = set(nums)
         def bt(s):
             if len(s) > len(nums):
                 return ""
